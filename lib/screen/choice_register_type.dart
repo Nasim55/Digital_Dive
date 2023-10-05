@@ -14,7 +14,7 @@ class ChoiceRegisterType extends StatefulWidget {
 
 class _ChoiceRegisterTypeState extends State<ChoiceRegisterType> {
   bool isAnimate = false;
-
+  bool isATeacher = false;
   Future animations() async {
     setState(() => isAnimate = true);
     await Future.delayed(
@@ -32,73 +32,79 @@ class _ChoiceRegisterTypeState extends State<ChoiceRegisterType> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        alignment: Alignment.center,
-        children: [
-          AnimatedPositioned(
-            top: 40,
-            left: isAnimate ? 40 : 80,
-            duration: const Duration(milliseconds: 700),
-            child: Transform.rotate(
-              alignment: Alignment.topLeft,
-              angle: 45,
-              child: Container(
-                margin: const EdgeInsets.only(bottom: 50),
-                width: 200,
-                height: 200,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(25),
-                    bottomRight: Radius.circular(25),
-                    topLeft: Radius.circular(25),
-                    topRight: Radius.circular(25),
-                  ),
-                  gradient: LinearGradient(colors: [
-                    Colors.blueGrey,
-                    Colors.lightBlue,
-                  ], begin: Alignment.topRight, end: Alignment.bottomLeft),
-                ),
-              ),
-            ),
-          ),
-          AnimatedPositioned(
-            duration: const Duration(milliseconds: 700),
-            right: isAnimate ? 40 : 80,
-            top: 10,
-            child: Transform.rotate(
-              alignment: Alignment.bottomRight,
-              angle: 45,
-              child: Container(
-                margin: const EdgeInsets.only(top: 50),
-                width: 200,
-                height: 200,
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(25),
-                    bottomRight: Radius.circular(25),
-                    topLeft: Radius.circular(25),
-                    topRight: Radius.circular(25),
-                  ),
-                  gradient: LinearGradient(
-                    colors: [
-                      Colors.orange,
-                      Colors.deepOrange,
-                    ],
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            bottom:isAnimate? -90 :0 ,
-            child: AnimatedScale(
+      body: SafeArea(
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            AnimatedPositioned(
+              top: 40,
+              left: isAnimate ? 40 : 80,
               duration: const Duration(milliseconds: 700),
-              scale: isAnimate? 0.5: 1,
+              child: Transform.rotate(
+                alignment: Alignment.topLeft,
+                angle: 45,
+                child: Container(
+                  margin: const EdgeInsets.only(bottom: 50),
+                  width: 200,
+                  height: 200,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(25),
+                      bottomRight: Radius.circular(25),
+                      topLeft: Radius.circular(25),
+                      topRight: Radius.circular(25),
+                    ),
+                    gradient: LinearGradient(colors: [
+                      Colors.blueGrey,
+                      Colors.lightBlue,
+                    ], begin: Alignment.topRight, end: Alignment.bottomLeft),
+                  ),
+                ),
+              ),
+            ),
+            AnimatedPositioned(
+              duration: const Duration(milliseconds: 700),
+              right: isAnimate ? 40 : 80,
+              top: 10,
+              child: Transform.rotate(
+                alignment: Alignment.bottomRight,
+                angle: 45,
+                child: Container(
+                  margin: const EdgeInsets.only(top: 50),
+                  width: 200,
+                  height: 200,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(25),
+                      bottomRight: Radius.circular(25),
+                      topLeft: Radius.circular(25),
+                      topRight: Radius.circular(25),
+                    ),
+                    gradient: LinearGradient(
+                      colors: [
+                        Colors.orange,
+                        Colors.deepOrange,
+                      ],
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            AnimatedPositioned(
+              duration: const Duration(milliseconds: 700),
+              bottom: isAnimate? 300 : 550,
+              child: Container(
+                  alignment: Alignment.topCenter,
+                  child: const Text('Welcome!', style: TextStyle(fontSize: 55, fontWeight: FontWeight.bold),)
+              ),
+            ),
+            Positioned(
+              bottom: 0,
               child: Container(
                 width: 410,
-                height: 450,
+                height: 410,
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(25),
@@ -150,8 +156,24 @@ class _ChoiceRegisterTypeState extends State<ChoiceRegisterType> {
                 ),
               ),
             ),
-          ),
-        ],
+            AnimatedPositioned(
+              duration: const Duration(milliseconds: 700),
+              width: 200,
+              height: 200,
+              top: isAnimate ? 10 : -200,
+              child: Container(
+                alignment: Alignment.topCenter,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    scale: 9,
+                    image: AssetImage('images/rocket-158.gif'),
+                  ),
+                ),
+              ),
+            ),
+
+          ],
+        ),
       ),
     );
   }
