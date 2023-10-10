@@ -1,5 +1,6 @@
 import 'package:digital_dive/screen/choice_register_type.dart';
 import 'package:digital_dive/screen/home_page.dart';
+import 'package:digital_dive/screen/login_screen.dart';
 import 'package:digital_dive/screen/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         ChoiceRegisterType.routeNamed: (context) => const ChoiceRegisterType(
               activePage: 4,
             ),
+        LoginScreen.routeNamed: (context) => LoginScreen(),
       },
     );
   }
