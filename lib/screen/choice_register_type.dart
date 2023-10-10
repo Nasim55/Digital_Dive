@@ -1,3 +1,4 @@
+import 'package:digital_dive/screen/login_screen.dart';
 import 'package:digital_dive/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 
@@ -15,6 +16,7 @@ class ChoiceRegisterType extends StatefulWidget {
 class _ChoiceRegisterTypeState extends State<ChoiceRegisterType> {
   bool isAnimate = false;
   bool isATeacher = false;
+
   Future animations() async {
     setState(() => isAnimate = true);
     await Future.delayed(
@@ -94,11 +96,23 @@ class _ChoiceRegisterTypeState extends State<ChoiceRegisterType> {
             ),
             AnimatedPositioned(
               duration: const Duration(milliseconds: 700),
-              bottom: isAnimate? 300 : 550,
+              bottom: isAnimate ? 300 : 550,
               child: Container(
+                  padding: const EdgeInsets.all(8.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(25),
+                    color: Colors.black38,
+                  ),
                   alignment: Alignment.topCenter,
-                  child: const Text('Welcome!', style: TextStyle(fontSize: 55, fontWeight: FontWeight.bold),)
-              ),
+                  child: const Text(
+                    'Welcome',
+                    style: TextStyle(
+                      fontSize: 44,
+                      fontFamily: 'CroissantOne',
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  )),
             ),
             Positioned(
               bottom: 0,
@@ -124,12 +138,17 @@ class _ChoiceRegisterTypeState extends State<ChoiceRegisterType> {
                         opacity: isAnimate ? 0 : 1,
                         duration: const Duration(milliseconds: 700),
                         child: CustomButton(
-                          nameBtn: 'التسجيل كمعلم',
+                          nameBtn: 'Register as a teacher',
                           colors: const [
                             Colors.deepOrange,
                             Colors.deepOrangeAccent,
                           ],
-                          onTap: () {},
+                          onTap: () {
+                           setState(() {
+                             isATeacher = true;
+                           });
+                           Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoginScreen()));
+                          },
                         ),
                       ),
                     ),
@@ -143,7 +162,7 @@ class _ChoiceRegisterTypeState extends State<ChoiceRegisterType> {
                         opacity: isAnimate ? 0 : 1,
                         duration: const Duration(milliseconds: 700),
                         child: CustomButton(
-                          nameBtn: 'التسجيل كمستخدم',
+                          nameBtn: 'Register as a user',
                           colors: const [
                             Colors.white,
                             Colors.white54,
@@ -171,7 +190,6 @@ class _ChoiceRegisterTypeState extends State<ChoiceRegisterType> {
                 ),
               ),
             ),
-
           ],
         ),
       ),
